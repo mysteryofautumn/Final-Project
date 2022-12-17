@@ -1,0 +1,73 @@
+@startuml "Class Diagram"
+
+Class Character{
+    currentItem: ArrayList<String>
+    item1: Boolean
+    item2: Boolean
+    item3: Boolean
+    x: Integer
+    y: Integer
+    map: Map
+
+    open(String):Void
+    take(String):Void
+    walk(String):Void
+    use(String):Void
+    read(String):Void
+    help():Void
+}
+
+Class Container{
+    originalDescription: String
+    afterDescription: String
+    open: Boolean
+
+    print():Void
+}
+
+Class Game{
+    character: Character
+    win: Boolean
+
+    gameProcess():Void
+    correspond(String):Void
+}
+
+Class Map{
+    topLeft: Room
+    top: Room
+    topRight: Room
+    left: Room
+    middle: Room
+    right: Room
+    bottomLeft: Room
+    bottom: Room
+    bottomRight: Room
+
+    drawer: Container
+    refrigerator: Container
+
+    enter(Integer,Integer):Void
+
+}
+
+Class Room{
+    description: String
+    x: Integer
+    y: Integer
+
+    enter(): Void
+    change(String): Void
+}
+
+Class Main{
+    *
+}
+
+Map o-- Room
+Room o-- Container
+Game o-- Map
+Game o-- Character 
+Main o-- Game
+
+@enduml
